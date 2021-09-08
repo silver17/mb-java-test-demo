@@ -7,7 +7,7 @@ import java.util.UUID;
 @Getter
 public class CustomerException extends RuntimeException {
 
-    private UUID uuid;
+    private final UUID uuid;
 
     public CustomerException(String msg, UUID uuid) {
         super(msg);
