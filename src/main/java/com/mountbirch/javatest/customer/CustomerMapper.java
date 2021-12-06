@@ -1,12 +1,21 @@
 package com.mountbirch.javatest.customer;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
+import java.time.format.TextStyle;
+import java.util.Locale;
 
-@Mapper(componentModel = "spring")
-public interface CustomerMapper {
+public class CustomerMapper {
 
-    @Mapping(source = "birth", target = "birthDate")
-    CustomerDTO fromEntity(Customer customer);
+    public static CustomerDTO fromEntity(Customer customer) {
+        if (customer == null) {
+            return null;
+        }
+
+        return new CustomerDTO()
+                .setId(customer.getId())
+                .setName(customer.getName())
+                .setBirthYear(customer.getBirthDate().getYear())
+                .setBirthMonth(customer.getBirthDate().getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH))
+                .setBirthDay(customer.getBirthDate().getDayOfMonth());
+    }
 
 }

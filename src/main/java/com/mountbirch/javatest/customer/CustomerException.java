@@ -1,17 +1,18 @@
 package com.mountbirch.javatest.customer;
 
-import lombok.Getter;
-
 import java.util.UUID;
 
-@Getter
 public class CustomerException extends RuntimeException {
 
     private final UUID uuid;
 
     public CustomerException(String msg, UUID uuid) {
-        super(msg);
+        super(String.format("Customer with uuid %s not found", uuid));
         this.uuid = uuid;
+    }
+
+    public UUID getUuid() {
+        return this.uuid;
     }
 
 }
