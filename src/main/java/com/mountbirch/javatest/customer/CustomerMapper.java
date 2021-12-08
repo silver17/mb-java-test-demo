@@ -5,11 +5,14 @@ import java.util.Locale;
 
 public class CustomerMapper {
 
+    private CustomerMapper() {}
+
     public static CustomerDTO fromEntity(Customer customer) {
         if (customer == null) {
             return null;
         }
 
+        // TODO what can be improved in this method?
         return new CustomerDTO()
                 .setId(customer.getId())
                 .setName(customer.getName())
